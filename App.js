@@ -1,7 +1,10 @@
+import {Constants} from 'expo';
 import React from 'react';
-import {StyleSheet, View} from 'react-native';
+import {ScrollView, StyleSheet, View} from 'react-native';
+import {NativeRouter, Route, Switch} from 'react-router-native';
 
-import Home from './Home/Home.jsx';
+import Home from './Home/Home';
+import NavBar from './components/NavBar';
 
 export default class App extends React.Component {
   state = {
@@ -10,9 +13,16 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <View style={styles.container}>
-        <Home />
-      </View>
+      <NativeRouter>
+        <View style={styles.container}>
+          <NavBar />
+          <ScrollView>
+            <Switch>
+              <Route exact path="/" component={Home} />
+            </Switch>
+          </ScrollView>
+        </View>
+      </NativeRouter>
     );
   }
 }
@@ -20,8 +30,7 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    marginTop: Constants.statusBarHeight,
+    backgroundColor: 'lightgreen',
   },
 });
