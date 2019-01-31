@@ -61,7 +61,7 @@ export default class Home extends React.Component {
     return (
       <View style={styles.container}>
         {this.state.data.map((datum, key) => (
-          <Card key={key} data={datum} />
+          <Card key={key} data={datum} kunci={key.toString()} />
         ))}
       </View>
     );

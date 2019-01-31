@@ -1,10 +1,13 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
+import {Link} from 'react-router-native';
 
 export default (NavBar = (props) => {
   return (
     <View style={styles.container}>
-      <Text style={{textAlign: 'center'}}>Navbar {props.data}</Text>
+      <Link to="/" style={styles.title}>
+        <Text>Home</Text>
+      </Link>
     </View>
   );
 });
@@ -13,5 +16,8 @@ const styles = StyleSheet.create({
   container: {
     paddingVertical: 10,
     backgroundColor: 'lightblue',
+  },
+  title: {
+    alignSelf: 'center',
   },
 });

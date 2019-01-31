@@ -1,5 +1,6 @@
 import React from 'react';
-import {View, Image, StyleSheet, Text} from 'react-native';
+import {View, Image, StyleSheet, Text, Button} from 'react-native';
+import {Link} from 'react-router-native';
 
 export default (Card = (props) => {
   return (
@@ -8,6 +9,9 @@ export default (Card = (props) => {
       <View style={styles.info}>
         <Text style={styles.title}>{props.data.name.toUpperCase()}</Text>
         <Text>{props.data.info}</Text>
+        <Link to={`/item/${props.kunci}`}>
+          <Text>Detail ke-{props.kunci.padStart(2, '0')}</Text>
+        </Link>
       </View>
     </View>
   );
