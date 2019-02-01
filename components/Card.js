@@ -1,19 +1,35 @@
 import React from 'react';
-import {View, Image, StyleSheet, Text, Button} from 'react-native';
-import {Link} from 'react-router-native';
+import {
+  Alert,
+  View,
+  Image,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  Linking,
+} from 'react-native';
+import {Redirect} from 'react-router-native';
+
+const handlePress = (id) => {
+  Alert.alert(`Id of this event is ${id}`);
+};
 
 export default (Card = (props) => {
   return (
-    <View style={styles.kotak}>
-      <Image style={styles.image} source={{uri: props.data.image}} />
-      <View style={styles.info}>
-        <Text style={styles.title}>{props.data.name.toUpperCase()}</Text>
-        <Text>{props.data.info}</Text>
-        <Link to={`/item/${props.kunci}`}>
-          <Text>Detail ke-{props.kunci.padStart(2, '0')}</Text>
-        </Link>
+    <TouchableOpacity
+      onPress={() => {
+        handlePress(props.data._id);
+      }}>
+      <View style={styles.kotak}>
+        <Image style={styles.image} source={{uri: props.data.poster}} />
+        <View style={styles.info}>
+          <Text style={styles.title}>
+            {props.data.judul_event.toUpperCase()}
+          </Text>
+          <Text numberOfLines={4}>{props.data.about.deskripsi}</Text>
+        </View>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 });
 
@@ -32,5 +48,6 @@ const styles = StyleSheet.create({
   },
   title: {
     fontWeight: 'bold',
+    textAlign: 'center',
   },
 });
