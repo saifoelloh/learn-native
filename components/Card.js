@@ -8,7 +8,7 @@ import {
   TouchableOpacity,
   Linking,
 } from 'react-native';
-import {Redirect} from 'react-router-native';
+import {Link} from 'react-router-native';
 
 const handlePress = (id) => {
   Alert.alert(`Id of this event is ${id}`);
@@ -16,28 +16,31 @@ const handlePress = (id) => {
 
 export default (Card = (props) => {
   return (
-    <TouchableOpacity
-      onPress={() => {
-        handlePress(props.data._id);
-      }}>
-      <View style={styles.kotak}>
-        <Image style={styles.image} source={{uri: props.data.poster}} />
-        <View style={styles.info}>
-          <Text style={styles.title}>
-            {props.data.judul_event.toUpperCase()}
-          </Text>
-          <Text numberOfLines={4}>{props.data.about.deskripsi}</Text>
+    <TouchableOpacity>
+      <Link to={`/item/${props.data._id}`}>
+        <View style={styles.kotak}>
+          <Image
+            style={styles.image}
+            resizeMode="contain"
+            source={{uri: props.data.poster}}
+          />
+          <View style={styles.info}>
+            <Text style={styles.title}>
+              {props.data.judul_event.toUpperCase()}
+            </Text>
+            <Text numberOfLines={4}>{props.data.about.deskripsi}</Text>
+          </View>
         </View>
-      </View>
+      </Link>
     </TouchableOpacity>
   );
 });
 
 const styles = StyleSheet.create({
   kotak: {
-    marginVertical: 10,
+    marginBottom: 10,
     flexDirection: 'row',
-    backgroundColor: 'lightblue',
+    backgroundColor: '#fffaf0',
   },
   image: {
     flex: 2,

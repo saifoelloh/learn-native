@@ -9,16 +9,12 @@ import Home from './Home/Home';
 import NavBar from './components/NavBar';
 
 export default class App extends React.Component {
-  state = {
-    arr: ['coba', 'saja', 'bro', 'there'],
-  };
-
   render() {
     return (
       <NativeRouter>
         <View style={styles.container}>
           <NavBar />
-          <ScrollView>
+          <ScrollView style={styles.kotak}>
             <Switch>
               <Route exact path="/" component={Home} />
               <Route path="/about" component={About} />
@@ -35,6 +31,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     marginTop: Constants.statusBarHeight,
-    backgroundColor: 'lightgreen',
+    backgroundColor: '#00bfff',
+  },
+  kotak: {
+    paddingVertical: 20,
   },
 });
